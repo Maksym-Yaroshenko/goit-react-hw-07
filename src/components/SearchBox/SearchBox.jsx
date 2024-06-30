@@ -2,11 +2,11 @@ import { useId } from "react";
 import css from "./SearchBox.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { changeFilter } from "../../redux/filtersSlice";
-import { collbackFiltersSlice } from "../../redux/collbackFunctions";
+import { selectNameFilter } from "../../redux/filtersSlice";
 
 export default function SearchBox() {
   const dispatch = useDispatch();
-  const selectNameFilter = useSelector(collbackFiltersSlice);
+  const nameFilter = useSelector(selectNameFilter);
 
   const userInputId = useId();
 
@@ -21,7 +21,7 @@ export default function SearchBox() {
         className={css.input}
         type="text"
         name="userValue"
-        value={selectNameFilter}
+        value={nameFilter}
         onChange={handleChange}
         id={userInputId}
       />
